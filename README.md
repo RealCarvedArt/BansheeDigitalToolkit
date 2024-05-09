@@ -37,6 +37,14 @@ Table of Contents
 20.	Carburetor Theory 101
 21.	AC to DC Conversion
 ```
-### Additional Information
+
+## Support This Project
+Your support is appreciated! If you find the Banshee Digital Toolkit helpful, consider making a donation via [<img src="https://github.com/RealCarvedArt/BansheeDigitalToolkit/assets/78761379/83177de4-3caa-478b-b251-ce1a18dd8891" width="20"/>](https://ko-fi.com/carvedart)
+Ko-fi to help maintain and improve it.
+
+[<img src="https://github.com/RealCarvedArt/BansheeDigitalToolkit/assets/78761379/9a8f5c7c-48e7-4ca2-875c-d198b4a48aea" width="300"/>](https://ko-fi.com/carvedart)
+
+
+## Additional Information
 
 This toolkit is provided 'as is' without any warranties or guarantees of suitability.
