@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BansheeToolkit" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/banshee_cyan</item>
+        <item name="colorOnPrimary">@color/banshee_black</item>
+        <item name="colorSecondary">@color/banshee_amber</item>
+        <item name="colorOnSecondary">@color/banshee_black</item>
+        <item name="colorSurface">@color/banshee_surface</item>
+        <item name="colorSurfaceVariant">@color/banshee_surface_high</item>
+        <item name="colorOnSurface">@color/banshee_white</item>
+        <item name="colorOnSurfaceVariant">@color/banshee_muted</item>
+        <item name="android:colorAccent">@color/banshee_cyan</item>
+        <item name="android:navigationBarColor">@color/banshee_black</item>
+        <item name="android:statusBarColor">@color/banshee_black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+</resources>

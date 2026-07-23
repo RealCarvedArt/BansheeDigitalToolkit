@@ -1,50 +1,87 @@
-# Banshee Digital Toolkit
-by CarvedArt
+# Banshee Digital Toolkit for Android
 
-An extensive digital toolkit for Yamaha Banshee owners and enthusiasts, tailored to streamline various calculations and maintenance tasks. This toolkit is essential for anyone looking to enhance the performance and understanding of their Banshee. It's compatible with Excel 2007 or later versions.
+A native, private-by-design Android conversion of `BansheeDigitalToolkit_v2.10.xlsx`
+for Yamaha Banshee owners and builders.
 
- ### Key Features
+The app preserves the workbook's 22 sheets, 7,242 populated cells, 680 formulas, and
+61 embedded illustrations while replacing spreadsheet navigation with fast, touch-friendly
+tools. It runs entirely offline, contains no advertising or analytics, and requests no
+dangerous permissions.
 
-- Jetting Guidance: Includes a step-by-step guide on how to jet a Banshee, a comprehensive jetting calculator, and sample jetting settings.
-- Performance Calculators: Features calculators for determining horsepower, pre-mix ratios, displacement, and speed to fine-tune your Banshee's performance.
-- Maintenance Specs: Provides quick specs, torque specifications, and needle jet specs to assist in regular maintenance.
-- Reference Material: Offers a color options guide by year, VIN decoder, and an electrical schematic for troubleshooting.
-- Educational Resources: Learn the fundamentals with Carburetor Theory 101, engine building formulas, and a detailed FAQ on Banshee jetting.
-- Specialized Tools: Includes tools for syncing carbs, calculating chain length, port angle areas, and converting AC to DC, among others.
+## Android features
 
-### Below is the table of contents for the toolkit
+- Interactive jetting calculator driven by the workbook's full calculation matrix
+- VIN decoder with 17-position breakdown and check-digit validation
+- Six-gear speed calculator with live RPM table
+- Horsepower, pre-mix, chain, displacement, and port angle-area calculators
+- Engine Formula Lab containing all 90 workbook formulas
+- Searchable jetting, maintenance, torque, troubleshooting, and reference material
+- Original color guides, carburetor diagrams, wiring schematic, and conversion illustrations
+- Responsive dark field-console UI with live validation and Android Back support
+- Lazy-loaded workbook sheets for a quick startup and modest memory use
+
+The complete migration map is documented in
+[`docs/MIGRATION_MAP.md`](docs/MIGRATION_MAP.md). The source workbook audit is in
+[`docs/WORKBOOK_AUDIT.md`](docs/WORKBOOK_AUDIT.md).
+
+## Security and privacy
+
+The manifest declares no internet, storage, location, camera, microphone, contacts, or
+advertising permissions. Cleartext traffic and Android backups are disabled. Workbook data
+is packaged as read-only application assets; inputs stay in process and are not persisted or
+transmitted.
+
+See [`docs/SECURITY.md`](docs/SECURITY.md) for the threat model and release guidance.
+
+## Verification
+
+The unit suite evaluates every one of the workbook's 680 formula cells and compares the
+result with Excel's cached result. It also tests changed inputs and pins the workbook SHA-256:
+
+`5e1159a637d5227cc41898c2ea5c6c60174892dbd0de7d994e7876e2e3d120b9`
+
+```powershell
+$env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
+.\gradlew.bat lintDebug testDebugUnitTest assembleDebug
 ```
-Table of Contents
-1.	How to Jet a Banshee
-2.	Banshee Jetting Calculator
-3.	Jetting Sample Settings
-4.	Needle Jet Specs
-5.	How to Sync Carbs
-6.	Quick Specs
-7.	Torque Specs
-8.	Color Options by Year
-9.	VIN Decoder
-10.	Speed Calculator
-11.	Horsepower Calculator
-12.	Pre-Mix Ratio Calculator
-13.	Chain Calculator
-14.	Displacement Calculator
-15.	Engine Building Formulas
-16.	Port Angle Area
-17.	Mikuni Troubleshooting
-18.	Electrical Schematic
-19.	Banshee Jetting FAQ
-20.	Carburetor Theory 101
-21.	AC to DC Conversion
+
+For validation details, see [`docs/VERIFICATION.md`](docs/VERIFICATION.md).
+
+## Build requirements
+
+- Android Studio / Android SDK 37
+- JDK 17
+- No network connection is needed after Gradle dependencies are cached
+
+The debug APK is generated at:
+
+`app/build/outputs/apk/debug/app-debug.apk`
+
+A production release must be signed with a private release key that is never committed to
+the repository.
+
+## Re-extracting a workbook revision
+
+The checked-in Android assets are deterministic output from the audited workbook. To migrate
+a new workbook revision, install `openpyxl==3.1.5`, then run:
+
+```powershell
+python tools\extract_workbook.py "BansheeDigitalToolkit_v2.10.xlsx" `
+  --output app\src\main\assets\workbook.json `
+  --media-dir app\src\main\assets\workbook_media `
+  --audit-markdown docs\WORKBOOK_AUDIT.md
 ```
 
-## Support This Project
-Your support is appreciated! If you find the Banshee Digital Toolkit helpful, consider making a donation via [<img src="https://github.com/RealCarvedArt/BansheeDigitalToolkit/assets/78761379/83177de4-3caa-478b-b251-ce1a18dd8891" width="20"/>](https://ko-fi.com/carvedart)
-Ko-fi to help maintain and improve it.
+Run the full verification command afterward. A changed source hash or formula count causes
+the integrity test to fail until the migration is intentionally reviewed.
 
-[<img src="https://github.com/RealCarvedArt/BansheeDigitalToolkit/assets/78761379/9a8f5c7c-48e7-4ca2-875c-d198b4a48aea" width="300"/>](https://ko-fi.com/carvedart)
+## Project status
 
+`0.1.0-alpha01` is an evaluation build. Calculator output is baseline guidance, not a
+substitute for Yamaha service information, component manufacturer specifications, plug
+reading, detonation monitoring, or qualified mechanical judgment.
 
-## Additional Information
+## Support
 
-This toolkit is provided 'as is' without any warranties or guarantees of suitability.
+Created by [CarvedArt](https://ko-fi.com/carvedart). The software and its maintenance
+guidance are provided as-is, without warranties or guarantees of suitability.

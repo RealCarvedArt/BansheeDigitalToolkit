@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="banshee_black">#080B10</color>
+    <color name="banshee_surface">#111820</color>
+    <color name="banshee_surface_high">#19242E</color>
+    <color name="banshee_cyan">#39D6E7</color>
+    <color name="banshee_cyan_dark">#006875</color>
+    <color name="banshee_amber">#FFB020</color>
+    <color name="banshee_white">#F5F8FA</color>
+    <color name="banshee_muted">#A9BAC6</color>
+</resources>

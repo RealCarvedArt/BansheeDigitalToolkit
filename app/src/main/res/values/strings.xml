@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Banshee Digital Toolkit</string>
+    <string name="search_tools">Search all tools and guides</string>
+    <string name="offline_badge">PRIVATE • OFFLINE • NO ADS</string>
+    <string name="tool_glyph_format">%1$s  //  %2$s</string>
+</resources>
